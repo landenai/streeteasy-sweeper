@@ -47,7 +47,7 @@ const getConversation = async () => {
 
 const getListings = async (url) => {
   const browser = await puppeteer.launch({
-    headless: false,
+    headless: true,
     defaultViewport: null,
   });
   const page = await browser.newPage();
@@ -120,7 +120,6 @@ const sendToSlack = async (listings) => {
 };
 
 while (true) {
-  console.log("Running...");
   const listings = await getListings(
     "https://streeteasy.com/for-rent/nyc/price:-2000%7Carea:306,305,321,364,322,328,325,307,303,304,301,353,319,326,329,318,302%7Cin_rect:40.655,40.702,-74.027,-73.944"
   );
