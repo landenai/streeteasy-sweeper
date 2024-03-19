@@ -106,18 +106,15 @@ const sendToSlack = async (listings) => {
       },
     });
   });
-  fetch(
-    "https://hooks.slack.com/services/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",
-    {
-      method: "POST",
-      body: JSON.stringify({
-        blocks: body.blocks,
-      }),
-      headers: {
-        "Content-type": "application/json",
-      },
-    }
-  ).then(async (response) => {
+  fetch(process.env.WEBHOOK_URL, {
+    method: "POST",
+    body: JSON.stringify({
+      blocks: body.blocks,
+    }),
+    headers: {
+      "Content-type": "application/json",
+    },
+  }).then(async (response) => {
     await getConversation();
   });
 };
