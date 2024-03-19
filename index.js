@@ -38,7 +38,6 @@ const getConversation = async () => {
       return response.json();
     })
     .then((data) => {
-      console.log(data);
       const botMsgs = data["messages"].filter(
         (e) => e.hasOwnProperty("subtype") && e["subtype"] === "bot_message"
       );
